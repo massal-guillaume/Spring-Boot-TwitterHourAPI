@@ -2,7 +2,7 @@
 
 # Agar.ia 3D
 
-TwitterHourAPI est une API developé en Java grace à Spring Boot avec JPA  Hibernate et MYSQL
+TwitterHourAPI est une API developée en Java grace à Spring Boot avec JPA  Hibernate, MYSQL et Thymeleaf.
 
 ## Descriptif 
 
