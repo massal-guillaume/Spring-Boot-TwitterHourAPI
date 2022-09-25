@@ -1,0 +1,102 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Tweet pendant la dernière semaine : </title>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+</head>
+<style>
+            body{
+                text-align: center;
+            }
+            h1{
+				text-align: center;
+				text-shadow: 1px 1px 1px , 2px 2px 1px;
+				font-size: 4rem;
+			}
+			h2{
+			    text-align: center;
+				text-shadow: 1px 1px 1px , 2px 2px 1px;
+				font-size: 3rem;
+				}
+            #chart_div{
+            text-align: center;
+            }
+            #piechart{
+            text-align: center;
+            width: 900px;
+            height: 500px;
+            margin-left : 500px;
+            }
+</style>
+<script th:inline="javascript">
+        var real_data = /*[[${chartData}]]*/'noValue';
+        var moyenne_data =  /*[[${moyenneData}]]*/'noValue';
+        $(document).ready(function() {
+            google.charts.load('current', {
+                packages : [ 'corechart', 'bar' ]
+            });
+            google.charts.setOnLoadCallback(drawColumnChart);
+            google.charts.setOnLoadCallback(drawPieChart);
+        });
+        function drawColumnChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Hour');
+            data.addColumn('number', 'Tweet');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Vos Heures de Tweet',
+                hAxis : {
+                    title : 'Hour',
+                },
+                vAxis : {
+                    title : 'Tweet Count'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document
+                    .getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+        function drawPieChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'Views');
+            Object.keys(moyenne_data).forEach(function(key) {
+                data.addRow([ key, moyenne_data[key] ]);
+            });
+            var options = {
+                title : 'Moyenne des Heures de Tweet de tout les utilisateurs'
+
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+<body>
+<div>
+    <h1>Heures moyenne de vos Tweet pendant la dernière semaine :</h1>
+    <div id="chart_div"></div> <br>
+</div>
+<div>
+    <h2>Tweet des autres utilisateurs de l'API</h2><br><br>
+    <form action="/" class="text-center">
+    <button type="submit" class="btn btn-lg btn-primary mr-1">Revenir au Menu</button>
+    </form>
+    <div id="piechart" ></div><br>
+
+</div>
+
+
+
+</body>
+</html>
