@@ -1,7 +1,5 @@
 # TwitterHourAPI
 
-# Agar.ia 3D
-
 TwitterHourAPI est une API developpée en Java grâce à Spring Boot avec JPA  Hibernate, MYSQL et Thymeleaf.
 
 ## Descriptif 
@@ -14,4 +12,4 @@ Cette API implemente evidement l'API Twitter pour recuperer les DATA
 
 J'ai mis en ligne l'api en la configurant sur un VPS avec une base de donnée
 J'ai realise un front tout simple pour que tout soit utilisable 
-Lien : www.apihourcheck.xyz
+
