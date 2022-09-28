@@ -10,6 +10,7 @@ Cette API implemente evidement l'API Twitter pour recuperer les DATA
 
 ## Installation 
 
-J'ai mis en ligne l'api en la configurant sur un VPS avec une base de donnée
+J'ai mis en ligne l'API en la configurant sur un VPS avec une base de donnée
 J'ai realise un front tout simple pour que tout soit utilisable 
+http://www.apihourcheck.xyz
 
